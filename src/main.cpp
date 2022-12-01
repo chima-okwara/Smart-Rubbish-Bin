@@ -5,7 +5,7 @@
 #include <HCSR04.h>
 #include "Servo.h"
 #include <pincontrol.hpp>
-#define binfull 15
+#define binfull 5.7
 
 void setup(void);
 void loop(void);
