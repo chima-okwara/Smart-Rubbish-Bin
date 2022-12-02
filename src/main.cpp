@@ -35,7 +35,7 @@ uint8_t rowPins [4] = {2, 3, 4, 5},
 
 Keypad keypad (makeKeymap(keys), rowPins, colPins, 4, 3);
 
-uint8_t binPercent;             //How full the bin is in %
+long binPercent;             //How full the bin is in %
 
 void setup()
 {
@@ -70,7 +70,9 @@ void setup()
 
 void loop()
 {
-    binPercent = (binfull / binCheck.dist()) * 100;
+    binPercent = map(constrain(binCheck.dist(), 7, 49), 50, 6, 0, 10);
+    binPercent = map(binPercent, 0, 10, -20, 120);
+    binPercent = constrain(binPercent, 0, 100);
     lcd.clear();
     lcd.setCursor(0, 0);
     lcd.print("Bin percentage: ");
